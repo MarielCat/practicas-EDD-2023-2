@@ -2,8 +2,10 @@ package ed.complejidad;
 
 public class Complejidad implements IComplejidad{
 
+    int contador;
+
     public long leeContador(){
-        return 0;
+        return contador;
     }
 
     /*El método escribeOperaciones y escribeLineaVacía al ser estaticos se implementan dentro de IComplejidad 
@@ -20,9 +22,10 @@ public class Complejidad implements IComplejidad{
         else{
             int resultado;
             resultado = tPascalRecAux(ren-1,col-1) + tPascalRecAux(ren-1 , col);
+            contador ++;
             return resultado;
-
         }
+
     }
     
     //Método principal que llama al auxiliar para calcular el resultado.
@@ -54,7 +57,7 @@ public class Complejidad implements IComplejidad{
                         array[j]=1; 
                         if(renTemp==i && col==j){ 
                             resultado = array[j]; 
-                            
+                            contador ++;
                         }
                     }
                     else{
@@ -65,6 +68,7 @@ public class Complejidad implements IComplejidad{
                     }
                 }
                     tempArray =array;
+                    contador ++;
             }
             return resultado;
         }
@@ -84,11 +88,12 @@ public class Complejidad implements IComplejidad{
             case 2:
             return 1;
             default:
-        
-        int resultado;
-        resultado = fibonacciRecAux(n1-1) + fibonacciRecAux(n1-2);
-        return resultado;
-        }
+            
+            int resultado;
+            resultado = fibonacciRecAux(n1-1) + fibonacciRecAux(n1-2);
+            contador ++;
+            return resultado;
+            }
     }
 
     //Método principal de Fibonacci Recursivo.
@@ -97,6 +102,7 @@ public class Complejidad implements IComplejidad{
             throw new IndexOutOfBoundsException ("Valores invalidos");
         } 
         return fibonacciRecAux(n);
+        
     }
 
     /*Método que calcula el resultado de la sucesión Fibonacci en la posición n de manera iterativa. 
@@ -114,8 +120,9 @@ public class Complejidad implements IComplejidad{
             numTemp = numAct; 
             numAct = numSig; 
             numSig = numSig + numTemp;
+            contador ++;
         }
-
+        
         return numAct;
     }
 
